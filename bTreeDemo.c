@@ -67,7 +67,7 @@ void userInterface(char *file) {
 int main() {
   printf("What is the name of the file to read and write employees to?\n");
   char *file;
-  file = (char *) malloc(sizeof(char));
+  file = (char *) malloc(26);
   fgets(file, 26, stdin);
   if (strlen(file) > 0) {
     file[strlen(file) - 1] = 0;
