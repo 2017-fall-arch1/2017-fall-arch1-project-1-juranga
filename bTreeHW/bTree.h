@@ -16,8 +16,8 @@ node *createNode(char name[]);
 
 /* ASCII Comparison between the first and second strings.
    Returns 2 if First is equal to Second.
-   Returns 1 if First is Greater.
-   Returns 0 if First is Smaller. */
+   Returns 1 if First is Smaller.
+   Returns 0 if First is Greater. */
 int compare (char first[], char second[]);
 
 /*Adds a name to the Tree */
