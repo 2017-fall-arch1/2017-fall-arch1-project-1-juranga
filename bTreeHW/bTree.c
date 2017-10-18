@@ -4,13 +4,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-node *createNode(char name[]) {
+node *createNode(char *name) {
   node *newNode;
   newNode = malloc(sizeof(node));
   if (newNode == NULL)
     return NULL;
   newNode->left = newNode->right = NULL;
-  newNode->name = name;
+  newNode-> name = name;
   return newNode;
 }
 
@@ -33,6 +33,10 @@ int compare(char first[], char second[]) {
 void addName(node **head, char *name) {
   if (*head == NULL) {
     *head = createNode(name);
+    return;
+  }
+  if ((*head)->name == NULL) {
+    (*head)->name = name;
     return;
   }
   if (compare((*head)->name, name) == 0) {
@@ -110,21 +114,23 @@ void removeName(node **head, char name[]) {
       tmp = getSmallestFromLargest(&((*head)->left));
       (*head)->name = (*tmp)->name;
       *tmp = NULL;
+      return;
     }
     else if ((*head)->left == NULL && (*head)->right != NULL){
       node **tmp;
       tmp = getLargestFromSmallest(&((*head)->right));
       (*head)->name = (*tmp)->name;
       *tmp = NULL;
+      return;
     }
     else if ((*head)->left != NULL && (*head)->right != NULL) {
       node **tmp;
       tmp = getSmallestFromLargest(&((*head)->left));
       (*head)->name = (*tmp)->name;
       *tmp = NULL;
+      return;
     }
-    else
-      *head = NULL;
+    (*head)->name = NULL;
     return;
   }
   if (compare((*head)->name, name) == 0) 
